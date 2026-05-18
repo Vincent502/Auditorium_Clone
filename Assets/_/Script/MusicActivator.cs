@@ -10,14 +10,9 @@ public class MusicActivator : MonoBehaviour
     {
         musicClip = GetComponent<AudioSource>();
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("Impact");
-    }
+    
     private void OnTriggerEnter2D(Collider2D collision)
     {
-
-        Debug.Log(musicClip.isPlaying);
         if (!musicClip.isPlaying)
         {
             musicClip.Play();
@@ -29,7 +24,6 @@ public class MusicActivator : MonoBehaviour
         }
         if (musicSprite.color.a < 1f)
         {
-            Debug.Log("Up");
             var color = musicSprite.color;
             color.a += 0.1f;
             musicSprite.color = color;
