@@ -1,4 +1,3 @@
-using Onigwrap;
 using UnityEngine;
 
 public class VisualCollider : MonoBehaviour
@@ -117,6 +116,7 @@ public class VisualCollider : MonoBehaviour
 
 
     #region Private & protected
+
     [Header("Shape Settings")]
     [Tooltip("Choose the outline shape to match the collider.")]
     [SerializeField] private OutlineShape shape = OutlineShape.Circle;
