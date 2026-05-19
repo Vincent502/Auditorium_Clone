@@ -1,3 +1,4 @@
+using Onigwrap;
 using UnityEngine;
 
 
@@ -5,7 +6,16 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class MusicActivator : MonoBehaviour
 {
+
+    #region Public Variable
+
     public SpriteRenderer musicSprite;
+
+    #endregion
+
+
+    #region Unity API
+
     private void Start()
     {
         _musicClip = GetComponent<AudioSource>();
@@ -30,6 +40,11 @@ public class MusicActivator : MonoBehaviour
         _musicEnabled = false;
     }
 
+
+    #endregion
+
+
+    #region Main API
     private void ActivateMusic()
     {
         if (_musicClip.volume < 1f)
@@ -48,6 +63,15 @@ public class MusicActivator : MonoBehaviour
         color.a -= 0.01f;
         musicSprite.color = color;
     }
+
+    #endregion
+
+
+    #region Private & Protected
+
     private AudioSource _musicClip;
     private bool _musicEnabled;
+
+    #endregion
+
 }
