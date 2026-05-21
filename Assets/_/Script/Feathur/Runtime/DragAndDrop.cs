@@ -3,12 +3,7 @@ using UnityEngine.InputSystem;
 
 public class DragAndDrop : MonoBehaviour
 {
-    private InputAction _click;
-    private Camera _cam;
-
-    private Interactable _target;
-    private Vector3 _dragOffset;
-
+    #region Unity API
     private void Start()
     {
         _click = InputSystem.actions.FindAction("Attack");
@@ -33,6 +28,11 @@ public class DragAndDrop : MonoBehaviour
         UpdateFeedback(mouseWorld);
     }
 
+#endregion
+
+
+    #region main API
+
     private Vector2 GetMouseWorldPosition()
     {
         Ray ray = _cam.ScreenPointToRay(Input.mousePosition);
@@ -44,7 +44,7 @@ public class DragAndDrop : MonoBehaviour
     {
         if (_target != null) return;
 
-        // Edge detection : teste tous les Interactable sans passer par le collider
+        
         foreach (Interactable interactable in FindObjectsByType<Interactable>(FindObjectsSortMode.None))
         {
             if (interactable.IsOnEdge(mouseWorld))
@@ -55,7 +55,7 @@ public class DragAndDrop : MonoBehaviour
             }
         }
 
-        // Drag : point cast classique à l'intérieur du collider
+        
         Interactable hit = Raycast();
         if (hit == null) return;
 
@@ -101,4 +101,17 @@ public class DragAndDrop : MonoBehaviour
         return hit.collider.GetComponentInParent<Interactable>()
             ?? hit.collider.GetComponent<Interactable>();
     }
+
+#endregion
+
+
+    #region Private & Protttected
+
+    private InputAction _click;
+    private Camera _cam;
+
+    private Interactable _target;
+    private Vector3 _dragOffset;
+
+    #endregion
 }
