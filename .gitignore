@@ -63,6 +63,9 @@ xcuserdata/
 # Xcode build data
 DerivedData/
 
+#cursor file path
+.cursor/
+
 # Obj-C/Swift specific
 *.hmap
 
