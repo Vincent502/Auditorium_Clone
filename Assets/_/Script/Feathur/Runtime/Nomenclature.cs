@@ -21,8 +21,5 @@ namespace Autditorium
         // private variable _camelCase
 
         // evité le bool dans les reception de methode ou (declaration : true/false) 
-
-        
-
     }
 }
